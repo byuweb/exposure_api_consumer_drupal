@@ -1,0 +1,17 @@
+{
+    "name": "drupal/exposure_api_consumer",
+    "description": "Creates content from the Exposure API.",
+    "type": "drupal-module",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Blake Morgan",
+            "email": "b.morgan.296@gmail.com"
+        }
+    ],
+    "require": {
+        "drupal/remote_stream_wrapper": "^1.0",
+        "ext-curl": "*",
+        "ext-json": "*"
+    }
+}

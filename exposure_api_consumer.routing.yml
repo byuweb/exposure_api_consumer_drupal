@@ -1,0 +1,9 @@
+expsoure_api_consumer_config_form:
+  path: 'admin/config/development/exposure_api_consumer/form'
+  defaults:
+    _form: '\Drupal\exposure_api_consumer\Form\ExposureApiConsumerConfigForm'
+    _title: 'Exposure API Consumer Config Form'
+  requirements:
+    _role: 'administrator'
+  options:
+    _admin_route: true

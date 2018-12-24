@@ -1,5 +1,5 @@
 <?php
 /**
 * @file
-* A description of what your module does.
+* Consumes the Exposure API.
 */
