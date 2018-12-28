@@ -67,7 +67,7 @@ class ExposureApiConsumerConfigForm extends ConfigFormBase
       '#title' => t('Endpoint:'),
       '#required' => TRUE,
       '#default_value' => $config->get('endpoint'),
-      '#description' => t('Example: https://exposure.co/api/3/sites/{endpoint}')
+      '#description' => t('Example: https://exposure.co/api/3/site/{endpoint}')
     );
     $form['sync_api'] = [
       '#type' => 'submit',
