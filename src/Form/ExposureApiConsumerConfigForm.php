@@ -21,7 +21,6 @@ class ExposureApiConsumerConfigForm extends ConfigFormBase
 {
 
   private $options;
-  private $connection;
   private $uid;
 
   /**
@@ -95,6 +94,9 @@ class ExposureApiConsumerConfigForm extends ConfigFormBase
    */
   public function submitForm(array &$form, FormStateInterface $form_state)
   {
+    $config = $this->config('exposure_api_consumer.settings');
+    $config->set('endpoint', $form_state->getValue('endpoint'));
+    $config->save();
     $message = $this->messenger();
     $message->addMessage($this->t("Update successful."), $message::TYPE_STATUS);
   }
@@ -171,7 +173,12 @@ class ExposureApiConsumerConfigForm extends ConfigFormBase
       }
     }
 
-    if (Node::load($storyId) == NULL) {
+    // Check if node exists
+    $connection = \Drupal::database();
+    $query = $connection->query("SELECT * FROM {node__field_story_link} WHERE `field_story_link_uri`='%s'", $storyUrl);
+    $result = $query->fetchAll();
+
+    if ($result == NULL) {
       $node = Node::create([
         'nid' => NULL,
         'langcode' => 'en',
