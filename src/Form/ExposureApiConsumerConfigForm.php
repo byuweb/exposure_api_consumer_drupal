@@ -175,7 +175,7 @@ class ExposureApiConsumerConfigForm extends ConfigFormBase
 
     // Check if node exists
     $connection = \Drupal::database();
-    $query = $connection->query("SELECT * FROM {node__field_story_link} WHERE `field_story_link_uri`='%s'", $storyUrl);
+    $query = $connection->query("SELECT * FROM {node__field_story_link} WHERE `field_story_link_uri`='$storyUrl'");
     $result = $query->fetchAll();
 
     if ($result == NULL) {
