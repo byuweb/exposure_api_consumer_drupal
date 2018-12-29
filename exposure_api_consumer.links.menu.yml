@@ -1,0 +1,5 @@
+exposure_api_consumer.admin settings:
+  title: 'Exposure API'
+  description: 'Sync with the exposure API'
+  route_name: expsoure_api_consumer_config_form
+  parent: 'system.admin_config_development'
