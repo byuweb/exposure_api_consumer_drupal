@@ -1,0 +1,50 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.photo_essay.body
+    - field.field.node.photo_essay.field_category
+    - field.field.node.photo_essay.field_story_id
+    - field.field.node.photo_essay.field_story_link
+    - field.field.node.photo_essay.field_thumbnail
+    - node.type.photo_essay
+  module:
+    - field_layout
+    - layout_discovery
+    - manage_display
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: node.photo_essay.teaser
+targetEntityType: node
+bundle: photo_essay
+mode: teaser
+content:
+  body:
+    type: text_default
+    weight: 1
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    label: hidden
+    type: title
+    weight: 0
+    region: content
+    settings:
+      tag: h2
+      linked: true
+    third_party_settings: {  }
+hidden:
+  content_moderation_control: true
+  created: true
+  field_category: true
+  field_story_id: true
+  field_story_link: true
+  field_thumbnail: true
+  links: true
+  uid: true
