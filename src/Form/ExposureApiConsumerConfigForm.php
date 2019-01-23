@@ -189,21 +189,19 @@ class ExposureApiConsumerConfigForm extends ConfigFormBase
         'promote' => 0,
         'comment' => 0,
         'field_thumbnail' => isset($file) ?
-          ['target_id' => $file->id()] : NULL,
+          ['target_id' => $file->id(), 'alt' => $storyTitle] : NULL,
         'field_story_id' => $storyId,
         'field_story_link' => $storyUrl
       ]);
       /**THIS CODE ADDS A DATE TO THE NODE*/
-      //get date from longer string
-      $dateOffset = 38;
-      $dateLength = 11;
-      $date = substr($storyModified, $dateOffset, $dateLength);
       //get the date; format it as a timestamp
-      $format = "M-d-Y";
-      $date = DateTime::createFromFormat($format, $date);
+      $dateStr = substr($storyModified, 0, 19);
+      $timezone = new \DateTimeZone(substr($storyModified, -6));
+      $date = DateTime::createFromFormat("Y-m-d\TH:i:s", $dateStr, $timezone);
+      $timestamp = $date->getTimestamp();
 
       //change time of the node's creation
-      $node->setCreatedTime(date_timestamp_get($date));
+      $node->setCreatedTime($timestamp);
       /**END ADDED CODE*/
       try {
         $node->save();
